@@ -190,6 +190,7 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
       ...rest
     } = this.props;
 
+    const link = networkLink(url, opts)
     const newClassName = cx(
       'react-share__ShareButton',
       {
@@ -216,16 +217,17 @@ export default class ShareButton<LinkOptions> extends Component<Props<LinkOption
         };
 
     return (
-      <button
+      <a
         {...rest}
         aria-label={rest['aria-label'] || networkName}
         className={newClassName}
         onClick={this.handleClick}
         ref={forwardedRef}
         style={newStyle}
+        href={link}
       >
         {children}
-      </button>
+      </a>
     );
   }
 }
